@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Album System</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+</head>
+<body>
+    <h1 align="center">Album</h1>
+    <div class="container" align="center">
+        <div id="loginForm">
+            <input type="text" id="email" placeholder="Email">
+            <input type="password" id="password" placeholder="Password">
+            <button onclick="login()">Login</button>
+        </div>
+        <div id="albumList" style="display: none;">
+            <h2>Albums</h2>
+            <button onclick="showCreateAlbumForm()">Create Album</button>
+            <button onclick="logout()">Logout</button>
+            <ul id="albumItems"></ul>
+        </div>
+        <div id="createAlbumForm" style="display: none;">
+            <h2>Create Album</h2>
+            <input type="text" id="albumTitle" placeholder="Album Title">
+            <input type="text" id="albumDescription" placeholder="Album Description">
+            <button onclick="createAlbum()">Create</button>
+            <button onclick="goBackToAlbumList()">Back</button>
+        </div>
+        <div id="imageSlider" style="display: none;">
+            <h2>Images</h2>
+            <button onclick="goBack()">Back</button>
+            <div id="imageList"></div> <!-- Display image names and delete buttons -->
+        </div>
+        
+    </div>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
