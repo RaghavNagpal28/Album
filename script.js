@@ -3,7 +3,6 @@ $(document).ready(function () {
     $('#albumList').hide();
     $('#imageSlider').hide();
 
-    // Load data from data.json file
     $.getJSON('data.json', function (data) {
         albums = data.albums || [];
         imageNames = data.imageNames || [];
@@ -18,7 +17,6 @@ function login() {
     const email = $('#email').val();
     const password = $('#password').val();
 
-    // Validate email and password
     if (email === 'raghav' && password === 'raghav') {
         $('#loginForm').hide();
         $('#albumList').show();
@@ -65,7 +63,6 @@ function showAlbumImages(albumTitle) {
 }
 
 function fetchAlbums() {
-    // Simulating fetching albums from the server
     albums.push({ title: 'Album 1', description: 'Description 1' });
     albums.push({ title: 'Album 2', description: 'Description 2' });
     refreshAlbumList();
@@ -94,21 +91,18 @@ function createAlbum() {
     const albumTitle = $('#albumTitle').val();
     const albumDescription = $('#albumDescription').val();
 
-    // Create a new album object
     const newAlbum = {
         title: albumTitle,
         description: albumDescription,
     };
 
-    albums.push(newAlbum); // Add the new album to the albums array
+    albums.push(newAlbum);
     refreshAlbumList();
-    updateDataJson(); // Update data.json
+    updateDataJson();
 
-    // Clear input fields after creating album
     $('#albumTitle').val('');
     $('#albumDescription').val('');
 
-    // Hide the create album form and show the album list
     $('#createAlbumForm').hide();
     $('#albumList').show();
 }
@@ -135,8 +129,8 @@ function deleteAlbum(albumTitle) {
     const albumIndex = albums.findIndex(album => album.title === albumTitle);
 
     if (albumIndex !== -1) {
-        albums.splice(albumIndex, 1); // Remove the album from the array
-        refreshAlbumList(); // Update the album list
+        albums.splice(albumIndex, 1);
+        refreshAlbumList();
     }
 }
 
@@ -148,7 +142,7 @@ function addImageName(albumTitle) {
         imageNames.push({ albumTitle: albumTitle, imageName: imageName });
         Swal.fire('Success', 'Image added successfully!', 'success');
         refreshImageNameList(albumTitle);
-        updateDataJson(); // Update data.json
+        updateDataJson();
     } else {
         Swal.fire('Error', 'Please enter an image link.', 'error');
     }
@@ -161,7 +155,7 @@ function deleteImageName(albumTitle, imageName) {
         imageNames.splice(indexToRemove, 1);
         Swal.fire('Success', 'Image deleted successfully!', 'success');
         refreshImageNameList(albumTitle);
-        updateDataJson(); // Update data.json
+        updateDataJson();
     } else {
         Swal.fire('Error', 'Image not found.', 'error');
     }
@@ -175,7 +169,7 @@ function updateDataJson() {
 
     $.ajax({
         type: 'POST',
-        url: 'update_data.php', // Update this URL based on your backend setup
+        url: 'update_data.php',
         data: JSON.stringify(data),
         dataType: 'json',
         success: function (response) {
